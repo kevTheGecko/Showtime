@@ -13,7 +13,7 @@ void showMovies(const MovieManager& manager) {
 	}
 
 	for (const Movie& mov : manager.getMovies()) {
-		std::cout << mov.getId() << " " << mov.getTitle() << " " << mov.getGenre() << " " << mov.getReleaseYear() << " |";
+		std::cout << mov.getId() << ". |Name: " << mov.getTitle() << "| |Genre: " << mov.getGenre() << "| |Year: " << mov.getReleaseYear() << "| |";
 
 		//Used to print Watch Status
 		if (mov.isWatched()) {
@@ -81,11 +81,19 @@ int main() {
 
 		//Lets the user set the watched status of a movie
 		else if (choice == 3) {
-			int id, status;
+			int id;
+			int status=0;
 			std::cout << "Movie ID: ";
 			if (!(std::cin >> id)) {
 				std::cout << "Please respond with a number, Showtime closing...\n";
 				return 1;
+			}
+			try {
+				std::string check = manager.setWatched(id, status == 1);
+			}
+			catch (const std::out_of_range& e) {
+				std::cout << "Could not update movie: " << e.what() << "\n";
+				 continue;
 			}
 
 			//User sets the watched status of a movie
