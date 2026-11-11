@@ -32,8 +32,8 @@ void showMovies(const MovieManager& manager) {
     }
 }
 
- 
-// Task 1 GUI Event Handler : onAddClicked
+
+// Task 1 GUI Event Handler mapping: onAddClicked
 
 void onAddClicked(MovieManager& manager, const std::string& title, const std::string& genre, int year) {
     try {
@@ -177,5 +177,3 @@ int main() {
     std::cout << "Enjoy Your Movie!\n";
     return 0;
 }
-
-

@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Showtime.vcxproj" />
+  <Project Path="Showtime.vcxproj" Id="e16ec3f2-f7b8-487d-ad53-c94a74639e4b" />
 </Solution>
