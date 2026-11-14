@@ -32,19 +32,6 @@ void showMovies(const MovieManager& manager) {
     }
 }
 
-
-// Task 1 GUI Event Handler mapping: onAddClicked
-
-void onAddClicked(MovieManager& manager, const std::string& title, const std::string& genre, int year) {
-    try {
-        int id = manager.addMovie(title, genre, year);
-        std::cout << "Added your movie with ID number " << id << " to the watchlist!\n\n";
-    }
-    catch (const std::invalid_argument& e) {
-        std::cout << "Could not add movie: " << e.what() << "\n\n";
-    }
-}
-
 //Runs the Program
 int main() {
     MovieManager manager;
@@ -75,8 +62,13 @@ int main() {
                 return 1;
             }
 
-            // Calls the event handler function 
-            onAddClicked(manager, title, genre, year);
+            try {
+                int id = manager.addMovie(title, genre, year);
+                std::cout << "Added your movie with ID number " << id << " to the watchlist!\n\n";
+            }
+            catch (const std::invalid_argument& e) {
+                std::cout << "Could not add movie: " << e.what() << "\n\n";
+            }
 
         }
 
@@ -177,3 +169,4 @@ int main() {
     std::cout << "Enjoy Your Movie!\n";
     return 0;
 }
+
