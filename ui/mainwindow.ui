@@ -6,15 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>805</width>
-    <height>450</height>
+    <width>960</width>
+    <height>442</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(25, 25, 25);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="btnWhatToWatch">
+   <widget class="QPushButton" name="btnWatchStatus">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -22,6 +25,15 @@
       <width>151</width>
       <height>61</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 0, 0);
+color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
      <string>Watch Status</string>
@@ -36,34 +48,63 @@
       <height>61</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 0, 0);
+color: rgb(0, 0, 0);</string>
+    </property>
     <property name="text">
      <string>Rate Movie</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="editInput">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>290</y>
-      <width>761</width>
+      <width>481</width>
       <height>51</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border-width: 3px;
+border-style: solid;
+border-color: rgb(100, 0, 2);
+</string>
+    </property>
     <property name="text">
-     <string>User Input</string>
+     <string/>
+    </property>
+    <property name="placeholderText">
+     <string>Click a Button to Start</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="movieResultOutput">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>340</y>
-      <width>751</width>
+      <width>931</width>
       <height>51</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="text">
-     <string/>
+     <string>Movie Chosen: </string>
+    </property>
+    <property name="indent">
+     <number>2</number>
     </property>
    </widget>
    <widget class="QListWidget" name="listMovies">
@@ -71,19 +112,38 @@
      <rect>
       <x>190</x>
       <y>10</y>
-      <width>231</width>
+      <width>311</width>
       <height>271</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-width: 3px;
+border-style: solid;
+border-color: rgb(100, 0, 2);</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QListWidget" name="errorOutput">
     <property name="geometry">
      <rect>
-      <x>430</x>
+      <x>510</x>
       <y>10</y>
-      <width>351</width>
-      <height>271</height>
+      <width>441</width>
+      <height>371</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-width: 3px;
+border-style: solid;
+border-color: rgb(100, 0, 2);</string>
+    </property>
+    <property name="isWrapping" stdset="0">
+     <bool>false</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="btnAddMovie">
@@ -95,11 +155,23 @@
       <height>61</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 0, 0);
+color: rgb(0, 0, 0);</string>
+    </property>
     <property name="text">
      <string>Add Movie</string>
     </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
    </widget>
-   <widget class="QPushButton" name="btnRateWatch_2">
+   <widget class="QPushButton" name="btnWhatToWatch">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -107,6 +179,15 @@
       <width>151</width>
       <height>61</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 0, 0);
+color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
      <string>What to Watch?</string>
@@ -118,13 +199,13 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>805</width>
+     <width>960</width>
      <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuShowtime_exe">
     <property name="title">
-     <string>Showtime.exe</string>
+     <string>Showtime</string>
     </property>
    </widget>
    <addaction name="menuShowtime_exe"/>

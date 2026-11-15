@@ -9,7 +9,7 @@ Movie::Movie(int id, const std::string& title, const std::string& genre, int rel
     }
     
     // new added line
-    if (releaseYear < 1888 || releaseYear > 2026) {
+    if (releaseYear < 1 || releaseYear > 2026) {
         throw std::invalid_argument("Not a Valid Year soryy!");
     }
     

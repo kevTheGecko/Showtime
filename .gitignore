@@ -87,3 +87,6 @@ Release/
 x64/
 out/
 build/
+
+#MacStuff
+.DS_Store
