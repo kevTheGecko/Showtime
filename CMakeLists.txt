@@ -4,6 +4,7 @@ project(Showtime LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+list(APPEND CMAKE_PREFIX_PATH "C:/Qt/6.12.0/msvc2022_64")
 
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
 
@@ -28,3 +29,9 @@ target_include_directories(Showtime PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
+if(WIN32)
+    get_filename_component(QT_BIN_DIR "${Qt6_DIR}/../../../bin" ABSOLUTE)
+    add_custom_command(TARGET Showtime POST_BUILD
+        COMMAND "${QT_BIN_DIR}/windeployqt.exe" --debug --no-translations
+                "$<TARGET_FILE:Showtime>")
+endif()

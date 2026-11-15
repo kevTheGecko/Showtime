@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>805</width>
+    <height>450</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,48 +17,48 @@
    <widget class="QPushButton" name="btnWhatToWatch">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>150</y>
-      <width>121</width>
-      <height>41</height>
+      <x>20</x>
+      <y>80</y>
+      <width>151</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Watch Status</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnRateWatch">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>200</y>
-      <width>121</width>
-      <height>41</height>
+      <x>20</x>
+      <y>150</y>
+      <width>151</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Rate Movie</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>260</y>
-      <width>113</width>
-      <height>41</height>
+      <x>20</x>
+      <y>290</y>
+      <width>761</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>user text inputs:</string>
+     <string>User Input</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>300</y>
-      <width>171</width>
+      <x>20</x>
+      <y>340</y>
+      <width>751</width>
       <height>51</height>
      </rect>
     </property>
@@ -69,71 +69,47 @@
    <widget class="QListWidget" name="listMovies">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>80</y>
-      <width>256</width>
-      <height>192</height>
+      <x>190</x>
+      <y>10</y>
+      <width>231</width>
+      <height>271</height>
      </rect>
     </property>
    </widget>
-   <widget class="QListWidget" name="listWidget_2">
+   <widget class="QListWidget" name="errorOutput">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>280</y>
-      <width>256</width>
-      <height>192</height>
+      <x>430</x>
+      <y>10</y>
+      <width>351</width>
+      <height>271</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>300</y>
-      <width>131</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>enter outputs:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>100</y>
-      <width>111</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>list of movies:</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>751</width>
-      <height>501</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout"/>
    </widget>
    <widget class="QPushButton" name="btnAddMovie">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>100</y>
-      <width>121</width>
-      <height>41</height>
+      <x>20</x>
+      <y>10</y>
+      <width>151</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>AddMovie</string>
+     <string>Add Movie</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnRateWatch_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>220</y>
+      <width>151</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>What to Watch?</string>
     </property>
    </widget>
   </widget>
@@ -142,10 +118,16 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>22</height>
+     <width>805</width>
+     <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuShowtime_exe">
+    <property name="title">
+     <string>Showtime.exe</string>
+    </property>
+   </widget>
+   <addaction name="menuShowtime_exe"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
