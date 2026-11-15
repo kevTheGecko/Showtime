@@ -63,7 +63,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>what to watch: Result</string>
+     <string/>
     </property>
    </widget>
    <widget class="QListWidget" name="listMovies">

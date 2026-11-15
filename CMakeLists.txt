@@ -11,22 +11,33 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/ui)
 
 add_executable(Showtime
-    ShowtimeMain.cpp
-    Movie.cpp
-    MovieManager.cpp
-    HighestRatedSelect.cpp
-    NewestMovieSelect.cpp
-    mainwindow.h
-    mainwindow.cpp
-    mainwindow.ui
+    # Source files
+    src/ShowtimeMain.cpp
+    src/Movie.cpp
+    src/MovieManager.cpp
+    src/HighestRatedSelect.cpp
+    src/NewestMovieSelect.cpp
+    src/mainwindow.cpp
+
+    # Headers
+    include/Movie.h
+    include/MovieManager.h
+    include/SelectMethod.h
+    include/HighestRatedSelect.h
+    include/NewestMovieSelect.h
+    include/mainwindow.h
+
+    # Qt Designer forms
+    ui/mainwindow.ui
 )
 
 target_link_libraries(Showtime PRIVATE Qt6::Widgets)
 
 target_include_directories(Showtime PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 if(WIN32)
