@@ -1,5 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+
 #include <QMainWindow>
 #include <string>
 #include "MovieManager.h"
@@ -17,7 +18,16 @@ public:
     ~MainWindow();
 
 private:
-    enum class WhichQuest {None, AddTitle, AddGenre, AddReleaseYear, GetsMovieID, WatchStatus, RateMovie};
+    enum class WhichQuest {
+        None, 
+        AddTitle, 
+        AddGenre, 
+        AddReleaseYear, 
+        GetsMovieID, 
+        WatchStatus, 
+        RateMovie, 
+        WhatToWatch
+    };
 
     Ui::MainWindow *ui;
     MovieManager manager_;

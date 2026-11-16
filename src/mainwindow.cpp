@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "HighestRatedSelect.h"
+#include "NewestMovieSelect.h"
 #include <stdexcept>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -42,6 +44,14 @@ MainWindow::MainWindow(QWidget *parent)
         usesMovieId_ = WhichQuest::RateMovie;
         ui->editInput->setPlaceholderText("Movies ID");
         showMessage("Changing Movie Rating...");
+        ui->editInput->setFocus();
+        });
+
+    //What to Watch Button
+    connect(ui->btnWhatToWatch, &QPushButton::clicked, this, [this]() {
+        whichQuest_ = WhichQuest::WhatToWatch;
+        ui->editInput->setPlaceholderText("1 for Highest Rated, 2 for Newest");
+        showMessage("Select recommendation method...");
         ui->editInput->setFocus();
         });
 
@@ -196,6 +206,39 @@ void MainWindow::usersInput() {
         }
         catch (const std::invalid_argument& e) {
             showMessage(QString("Could not rate movie: ") + e.what());
+        }
+
+        whichQuest_ = WhichQuest::None;
+        ui->editInput->setPlaceholderText("Please click a button!");
+        break;
+    }
+
+    //What to Watch Selection
+    case WhichQuest::WhatToWatch: {
+        bool validChoice = false;
+        int choice = input.toInt(&validChoice);
+
+        if (!validChoice || (choice != 1 && choice != 2)) {
+            showMessage("Please pick 1 (Highest Rated) or 2 (Newest)!");
+            break;
+        }
+
+        try {
+            std::string recommendedTitle;
+            if (choice == 1) {
+                HighestRatedSelect selector;
+                recommendedTitle = manager_.selectMovie(selector);
+                showMessage("Selected Highest Rated movie.");
+            } else {
+                NewestMovieSelect selector;
+                recommendedTitle = manager_.selectMovie(selector);
+                showMessage("Selected Newest movie.");
+            }
+
+            ui->movieResultOutput->setText("Movie Chosen: " + QString::fromStdString(recommendedTitle));
+        }
+        catch (const std::runtime_error& e) {
+            showMessage(e.what());
         }
 
         whichQuest_ = WhichQuest::None;
