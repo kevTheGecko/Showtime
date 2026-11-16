@@ -19,12 +19,29 @@ MainWindow::MainWindow(QWidget *parent)
     ui->errorOutput->addItem("What to Watch? - Type 1 for Highest Rated or 2 for Newest");
     ui->errorOutput->addItem("");
     ui->errorOutput->addItem("Your watchlist is shown on the left.");
+    ui->listMovies->addItem("ID. Title, Genre, ReleaseYear |WatchStatus| Rating");
 
     //Add Movie Button
     connect(ui->btnAddMovie, &QPushButton::clicked, this, [this]() {
         whichQuest_ = WhichQuest::AddTitle;
         ui->editInput->setPlaceholderText("Title");
         showMessage("Adding Movie...");
+        ui->editInput->setFocus();
+        });
+    //Watch Status Button
+    connect(ui->btnWatchStatus, &QPushButton::clicked, this, [this]() {
+        whichQuest_ = WhichQuest::GetsMovieID;
+        usesMovieId_ = WhichQuest::WatchStatus;
+        ui->editInput->setPlaceholderText("Movies ID");
+        showMessage("Changing Watch Status...");
+        ui->editInput->setFocus();
+        });
+    //Rate Movie Button
+    connect(ui->btnRateMovie, &QPushButton::clicked, this, [this]() {
+        whichQuest_ = WhichQuest::GetsMovieID;
+        usesMovieId_ = WhichQuest::RateMovie;
+        ui->editInput->setPlaceholderText("Movies ID");
+        showMessage("Changing Movie Rating...");
         ui->editInput->setFocus();
         });
 
@@ -88,7 +105,7 @@ void MainWindow::usersInput() {
         break;
 
     //Gets movie release year
-    case WhichQuest::AddReleaseYear:
+    case WhichQuest::AddReleaseYear: {
         bool validYear = false;
         int year = input.toInt(&validYear);
 
@@ -108,5 +125,82 @@ void MainWindow::usersInput() {
 
         whichQuest_ = WhichQuest::None;
         ui->editInput->setPlaceholderText("Please click a button!");
+        break;
+        }
+    
+    //Gets MovieId
+    case WhichQuest::GetsMovieID: {
+        bool validId = false;
+        int id = input.toInt(&validId);
+
+        if (!validId) {
+            showMessage("Please respond with a number!");
+            break;
+        }
+
+        pendingID_ = id;
+        whichQuest_ = usesMovieId_;
+
+        //Watch Status Placeholder text
+        if (usesMovieId_ == WhichQuest::WatchStatus) {
+            ui->editInput->setPlaceholderText("1 = Watched, 2 = Not Watched");
+        }
+
+        if (usesMovieId_ == WhichQuest::RateMovie) {
+            ui->editInput->setPlaceholderText("Rate the movie 1-5");
+        }
+        break;
+    }
+
+    //Gets/updates movie watch status
+    case WhichQuest::WatchStatus: {
+        int status = input.toInt();
+
+        if (status != 1 && status != 2) {
+            showMessage("Please pick 1 or 2!");
+            break;
+        }
+
+        try {
+            std::string title = manager_.setWatched(pendingID_, status == 1);
+            if (status == 1) showMessage("Updated " + QString::fromStdString(title) + " to Watched.");
+            else showMessage("Updated " + QString::fromStdString(title) + " to Not Watched.");
+            refreshList();
+        }
+        catch (const std::out_of_range& e) {
+            showMessage(QString("Could not update movie: ") + e.what());
+        }
+
+        whichQuest_ = WhichQuest::None;
+        ui->editInput->setPlaceholderText("Please click a button!");
+        break;
+    }
+
+    //Rate Movie
+    case WhichQuest::RateMovie: {
+        bool validRating = false;
+        int rating = input.toInt(&validRating);
+
+        if (!validRating) {
+            showMessage("Please respond with a number!");
+            break;
+        }
+
+        try {
+            std::string title = manager_.rateMovie(pendingID_, rating);
+            showMessage("Rated " + QString::fromStdString(title) + " " + QString::number(rating) + "/5");
+            refreshList();
+        }
+        catch (const std::out_of_range& e) {
+            showMessage(QString("Could not rate movie: ") + e.what());
+        }
+        catch (const std::invalid_argument& e) {
+            showMessage(QString("Could not rate movie: ") + e.what());
+        }
+
+        whichQuest_ = WhichQuest::None;
+        ui->editInput->setPlaceholderText("Please click a button!");
+        break;
+    }
     }
 }

@@ -17,14 +17,16 @@ public:
     ~MainWindow();
 
 private:
-    enum class WhichQuest {None, AddTitle, AddGenre, AddReleaseYear};
+    enum class WhichQuest {None, AddTitle, AddGenre, AddReleaseYear, GetsMovieID, WatchStatus, RateMovie};
 
     Ui::MainWindow *ui;
     MovieManager manager_;
     WhichQuest whichQuest_ = WhichQuest::None;
+    WhichQuest usesMovieId_ = WhichQuest::None;
 
     std::string pendingTitle_;
     std::string pendingGenre_;
+    int pendingID_ = 0;
 
     void refreshList();
     void usersInput();

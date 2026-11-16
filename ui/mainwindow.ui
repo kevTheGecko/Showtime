@@ -39,7 +39,7 @@ color: rgb(0, 0, 0);</string>
      <string>Watch Status</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnRateWatch">
+   <widget class="QPushButton" name="btnRateMovie">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -72,6 +72,7 @@ color: rgb(0, 0, 0);</string>
     </property>
     <property name="styleSheet">
      <string notr="true">border-width: 3px;
+color: rgb(255, 255, 255);
 border-style: solid;
 border-color: rgb(100, 0, 2);
 </string>
@@ -118,6 +119,7 @@ border-color: rgb(100, 0, 2);
     </property>
     <property name="styleSheet">
      <string notr="true">border-width: 3px;
+color: rgb(255, 255, 255);
 border-style: solid;
 border-color: rgb(100, 0, 2);</string>
     </property>
@@ -137,7 +139,8 @@ border-color: rgb(100, 0, 2);</string>
     <property name="styleSheet">
      <string notr="true">border-width: 3px;
 border-style: solid;
-border-color: rgb(100, 0, 2);</string>
+border-color: rgb(100, 0, 2);
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="isWrapping" stdset="0">
      <bool>false</bool>
