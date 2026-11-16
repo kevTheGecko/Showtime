@@ -78,5 +78,24 @@ cmake --build build
 **ShowtimeMain.cpp** - Starts the Program
 
 
+# review checks 
+1. Add all movies at once in this order
+	ordinal scale, sci-fi, 2017
+	infinity castle, fantasy, 2025
+	cars, comedy, 2006
+	Incredibles, action, 2004
+2. use watch movies button to set movie ids 2,4 to watched
+3. set each movie id to the following rating
+	1.3
+	2.3
+	3.4
+	4.5
+4. test both the newest and highest functions of what to watch
+
+# tech requirements
+qt: provides framework for the gui
+cmake, ensure code can be run on windows and mac devices
+
+
 # Assistance Used
 A mixture of youtube and AI was used to explain how to make Windows and Mac cross compatible using CMake because teammates had different operating systems making it difficult to work together. It was also used to cross reference the program against the rubric so nothing on the rubric was left missing (Didn't add anything itself only told what was missing). AI alongside with Youtube videos were also used to further explain how QT works and some of QT's important functionalities, they also explained how to connect QT to the Visual Studio workspace. (https://doc.qt.io) Was used for further QT explanations.
