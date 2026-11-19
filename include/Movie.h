@@ -5,7 +5,7 @@
 class Movie {
 public:
 	//Creates a movie with an ID, title, genre, and release year
-	Movie(int id, const std::string& title, const std::string& genre, int releaseYear);
+	Movie(int id, const std::string& title, const std::string& genre, int releaseYear, bool watched, int rating);
 
 	//Getters
 	int getId() const;

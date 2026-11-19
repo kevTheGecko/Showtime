@@ -10,7 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setFixedSize(size());
+    manager_.recall();
     refreshList();
+
 
     ui->errorOutput->addItem("Welcome to Showtime!");
     ui->errorOutput->addItem("Please pick from one of the options on the left:");
@@ -65,6 +67,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::refreshList() {
     ui->listMovies->clear();
+    
 
     for (const Movie& mov : manager_.getMovies()) {
         //Movies Main Info
@@ -142,12 +145,11 @@ void MainWindow::usersInput() {
     case WhichQuest::GetsMovieID: {
         bool validId = false;
         int id = input.toInt(&validId);
-
+        
         if (!validId) {
             showMessage("Please respond with a number!");
             break;
         }
-
         pendingID_ = id;
         whichQuest_ = usesMovieId_;
 

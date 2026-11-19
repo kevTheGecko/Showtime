@@ -27,6 +27,7 @@ The user is also able to ask the program what movie to watch next!
    - Wait until output states "CMake Generation Finished"
    - Choose Showtime.exe as the startup
    - Build and then run
+	- Optional: Clear out movie.csv if problems w/saving and loading arise
 
 **Mac:**
 1. Install the tools once: ```xcode-select --install``` and ```brew install cmake qt```

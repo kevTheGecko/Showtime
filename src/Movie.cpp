@@ -2,8 +2,8 @@
 #include <stdexcept>
 
 //How a movie is created, read through, and changed
-Movie::Movie(int id, const std::string& title, const std::string& genre, int releaseYear)
-    : id_(id), title_(title), genre_(genre), releaseYear_(releaseYear), watched_(false), rating_(0) {
+Movie::Movie(int id, const std::string& title, const std::string& genre, int releaseYear, bool watched, int rating)
+    : id_(id), title_(title), genre_(genre), releaseYear_(releaseYear), watched_(watched), rating_(rating){
     if (title.empty()) {
         throw std::invalid_argument("Title Cannot be Empty!");
     }
