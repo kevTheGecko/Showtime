@@ -23,7 +23,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->errorOutput->addItem("What to Watch? - Type 1 for Highest Rated or 2 for Newest");
     ui->errorOutput->addItem("");
     ui->errorOutput->addItem("Your watchlist is shown on the left.");
-    ui->listMovies->addItem("ID. Title, Genre, ReleaseYear |WatchStatus| Rating");
 
     //Add Movie Button
     connect(ui->btnAddMovie, &QPushButton::clicked, this, [this]() {
@@ -67,7 +66,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::refreshList() {
     ui->listMovies->clear();
-    
+    ui->listMovies->insertItem(0, "ID. Title, Genre, ReleaseYear |WatchStatus| Rating");
 
     for (const Movie& mov : manager_.getMovies()) {
         //Movies Main Info
